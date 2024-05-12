@@ -1,6 +1,6 @@
 import cohere
 import os
-from cohere.responses.classify import Example
+from cohere import ClassifyExample
 
 # get cohere api key from .env
 from dotenv import load_dotenv
@@ -19,15 +19,15 @@ OTHER = "Other"
 def get_user_intent(user_message):
 
   examples = [
-    Example("I need a tumour diagnoses on this brain scan.", BRAIN_TUMOUR),
-    Example("Can you make a diagnoses for this brain MRI?", BRAIN_TUMOUR),
-    Example("What is the cancer likelihood for this MRI scan of a patient's brain?", BRAIN_TUMOUR),
-    Example("What is the probability of positive tumour diagnosis for this brain MRI.", BRAIN_TUMOUR),
-    Example("I uploaded a brain scan, can you analyze and interpret it for me?", BRAIN_TUMOUR),
-    Example("What is the survival rate for stage 2 lung cancer", OTHER),
-    Example("What is the survival rate for brain tumour", OTHER),
-    Example("How is indigestion cured?", OTHER),
-    Example("What are the symptoms of diabetes?", OTHER),
+    ClassifyExample(text="I need a tumour diagnoses on this brain scan.", label=BRAIN_TUMOUR),
+    ClassifyExample(text="Can you make a diagnoses for this brain MRI?", label=BRAIN_TUMOUR),
+    ClassifyExample(text="What is the cancer likelihood for this MRI scan of a patient's brain?", label=BRAIN_TUMOUR),
+    ClassifyExample(text="What is the probability of positive tumour diagnosis for this brain MRI.", label=BRAIN_TUMOUR),
+    ClassifyExample(text="I uploaded a brain scan, can you analyze and interpret it for me?", label=BRAIN_TUMOUR),
+    ClassifyExample(text="What is the survival rate for stage 2 lung cancer", label=OTHER),
+    ClassifyExample(text="What is the survival rate for brain tumour", label=OTHER),
+    ClassifyExample(text="How is indigestion cured?", label=OTHER),
+    ClassifyExample(text="What are the symptoms of diabetes?", label=OTHER),
   ]
 
   # Sends the classification request to the Cohere model
