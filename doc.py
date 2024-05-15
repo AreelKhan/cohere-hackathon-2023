@@ -5,7 +5,6 @@ import json
 import uuid
 import requests
 from typing import List, Dict
-import validators
 from unstructured.partition.html import partition_html
 from unstructured.chunking.title import chunk_by_title
 # get cohere api key from .env
